@@ -53,9 +53,9 @@ exports.userDashboard = async (req, res) => {
     const taskdata = data[0].dataValues.task;
     // console.log(taskdata);
    
-    for(let i=0; i<taskdata.length;i++){
-      console.log(taskdata[i].dataValues.task);
-    }
+    // for(let i=0; i<taskdata.length;i++){
+    //   console.log(taskdata[i].dataValues.task);
+    // }
     if(data==null){
       z.z=1;
      return res.render('userDashboard.ejs', {
