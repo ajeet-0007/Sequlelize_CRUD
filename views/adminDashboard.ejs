@@ -30,23 +30,31 @@
                 </tr>
                 </thead>
                 <tbody>
+                  <form action="/admin/deleteuser" method="POST" >
                     <% for(var i=0; i<userData.length; i++) {%>
                     <tr>
-                      <th scope="row"><%= userData[i].dataValues.id %></th>
+                      <th scope="row" name="id" value="<%= userData[i].dataValues.id %>"><%= userData[i].dataValues.id %></th>
                       <td><%= userData[i].dataValues.name %></td>
                       <td><%= userData[i].dataValues.email %></td>
                       <td><%= userData[i].dataValues.designation %></td>
                       <td>
-                      <form action="/deleteuser" method="get">
-                        <button type="submit" class="btn btn-danger">Delete <%= userData[i].name %></button>
-                      </form>
-
+                        <!-- <button type="submit" name="deletedUser" value=>Delete</button> -->
+                        <label for="">Delete <%= userData[i].dataValues.name  %></label>
+                        <input type="submit" name="deletedUser" value=" <%= userData[i].dataValues.id %>">
                     </td>
+                    
                     </tr>
+                    
                     <% } %> 
+                   
+                     
+              
+                
+            
+                    
+                  </form>
                     </tbody>
               </table>
            
-        
 </body>
 </html>
