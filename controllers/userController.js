@@ -1,6 +1,6 @@
 const db = require("../models");
 const User = db.user;
-const Admin = db.user;
+const Admin = db.admin;
 const Task = db.task;
 let z = {};
 exports.getLogin = (req, res) => {
@@ -35,6 +35,9 @@ exports.userDashboard = async (req, res) => {
 
 exports.getUserData = async (req, res) => {
   z.y = 1;
+  const userTask = req.query.userTask;
+  console.log(userTask);
+
   const userData = await User.findAll({
     where: {
       email: currentUser.email,
@@ -52,6 +55,12 @@ exports.getUserData = async (req, res) => {
   });
   const taskdata = data[0].dataValues.task;
 
+  // await Task.destroy({
+  //   where:{
+  //     id: userTask
+  //   }
+  // })
+
   if (data == null) {
     z.z = 1;
     return res.render("userDashboard.ejs", {
@@ -66,6 +75,7 @@ exports.getUserData = async (req, res) => {
       z: z,
     });
   }
+
 };
 
 exports.addUserTask = async (req, res) => {
@@ -81,3 +91,7 @@ exports.addUserTask = async (req, res) => {
   const data = await Task.create(taskData);
   res.redirect("/user/dashboard");
 };
+
+// exports.deleteTask = async (req, res) => {
+
+// }

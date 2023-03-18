@@ -50,16 +50,17 @@
       <button type="submit">Submit</button>
     </form>
     
-    
+      <form action="/user/dashboard" method="get">
       <% if(z.z==2) { %>
+        <ul>
         <% for(let i=0; i<taskdata.length;i++){  %>
-          <ul>
-            <li><%= taskdata[i].dataValues.task %></li>
-          </ul>
+          
+            <li><%= taskdata[i].dataValues.task %> <input type="submit" name="userTask" value="<%= taskdata[i].dataValues.id  %>"></li>
+          
         <%} %>
-     
+      </ul>
         <% } %>
-    
+      </form>
  
     
 <!-- 

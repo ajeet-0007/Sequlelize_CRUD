@@ -41,13 +41,11 @@ exports.deleteUser = async (req, res) => {
   const response = {
     id: req.body.deletedUser,
   };
-  console.log(response);
-  const dats = await User.destroy({
+ await User.destroy({
     where: {
       id: response.id,
     },
   });
-  console.log(dats);
   const userData = await User.findAll({});
   res.render("adminDashboard.ejs", {
     userData: userData,
